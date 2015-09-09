@@ -12,7 +12,11 @@
  * @license     http://www.apache.org/licenses/LICENSE-2.0 - Apache License, Version 2.0
  */
 
-require __DIR__ . "/../vendor/autoload.php";
+if (file_exists($tAutoloader = __DIR__ . "/../../../autoload.php")) {
+    require $tAutoloader;
+} else {
+    require __DIR__ . "/../vendor/autoload.php";
+}
 
 $tParameters = $_SERVER["argv"];
 array_shift($tParameters);
