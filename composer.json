@@ -1,0 +1,44 @@
+{
+    "name": "scabbiafw/scabbia2-tasks",
+    "description": "Scabbia2 Tasks Component",
+    "type": "library",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "keywords": [
+        "larukedi",
+        "scabbia",
+        "scabbia2",
+        "scabbiafw",
+        "tasks"
+    ],
+    "homepage": "http://www.scabbiafw.com/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Scabbia Framework Organization",
+            "email": "contact@scabbiafw.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "scabbiafw/scabbia2-interfaces": "*",
+        "scabbiafw/scabbia2-testing": "*"
+    },
+    "require-dev": {
+    },
+    "suggest": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Scabbia\\Tasks\\": [ "src/Tasks/" ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Scabbia\\Tests\\Tasks\\": [ "tests/Tasks/" ]
+        }
+    },
+    "bin": [
+        "bin/scabbia"
+    ]
+}
