@@ -36,7 +36,7 @@ class Tasks
      */
     public static function taskName($uTask)
     {
-        $tOutput = "\\";
+        $tOutput = "";
         $tCapital = true;
 
         for ($tPos = 0, $tLen = strlen($uTask); $tPos < $tLen; $tPos++) {
@@ -57,7 +57,7 @@ class Tasks
             $tOutput .= $tChar;
         }
 
-        return $tOutput;
+        return "\\{$tOutput}Task";
     }
 
     /**
@@ -82,25 +82,30 @@ class Tasks
         }
 
         if ($uTask === null) {
-            $uInterface->write("please specify a command");
+            $uInterface->write("Please specify a task");
             return 1;
         }
 
         $uTaskPath = self::taskName($uTask);
 
-        if (!is_subclass_of($uTaskPath, "\Scabbia\Tasks\TaskBase")) {
-            $uInterface->write(sprintf("command not found - %s", $uTask));
-            return 1;
+        if (!is_subclass_of($uTaskPath, "\\Scabbia\\Tasks\\TaskBase")) {
+            // try again with \Scabbia prefix.
+            $uTaskPath = "\\Scabbia{$uTaskPath}";
+
+            if (!is_subclass_of($uTaskPath, "\\Scabbia\\Tasks\\TaskBase")) {
+                $uInterface->write(sprintf("Task not found - %s", $uTask));
+                return 1;
+            }
         }
 
         try {
             $tInstance = new $uTaskPath ();
             if ($tHelpCommand) {
-                $tInstance->help();
+                $tInstance->help($uInterface);
                 return 0;
             }
 
-            return $tInstance->executeTask($uParameters);
+            return $tInstance->executeTask($uParameters, $uInterface);
         } catch (\Exception $ex) {
             $uInterface->write(sprintf("%s: %s", get_class($ex), $ex->getMessage()));
             return 1;

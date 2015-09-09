@@ -13,6 +13,8 @@
 
 namespace Scabbia\Tasks;
 
+use Scabbia\Interfaces\IInterface;
+
 /**
  * Default methods needed for implementation of a task
  *
@@ -34,16 +36,19 @@ abstract class TaskBase
     /**
      * Executes the task
      *
-     * @param array $uParameters parameters
+     * @param array      $uParameters  parameters
+     * @param IInterface $uInterface   interface class
      *
      * @return int exit code
      */
-    abstract public function executeTask(array $uParameters);
+    abstract public function executeTask(array $uParameters, $uInterface = null);
 
     /**
      * Returns the usage form and list of available parameters
      *
-     * @return array usage summary
+     * @param IInterface $uInterface   interface class
+     *
+     * @return void
      */
-    abstract public function help();
+    abstract public function help($uInterface = null);
 }
