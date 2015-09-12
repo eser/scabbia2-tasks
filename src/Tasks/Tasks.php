@@ -28,7 +28,7 @@ use Scabbia\Tasks\TaskBase;
 class Tasks
 {
     /** @type array task namespaces */
-    public $namespaces = [
+    public static $namespaces = [
         "",
         "Scabbia"
     ];
