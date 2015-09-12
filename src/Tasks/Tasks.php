@@ -27,16 +27,23 @@ use Scabbia\Tasks\TaskBase;
  */
 class Tasks
 {
+    /** @type array task namespaces */
+    public $namespaces = [
+        "",
+        "Scabbia"
+    ];
+
+
     /**
-     * Transforms given task name into correct form
+     * Resolves given task name into class name
      *
      * @param string $uTask task name
      *
-     * @return string task name in correct form
+     * @return string resolved class name
      */
-    public static function taskName($uTask)
+    public static function taskClassName($uTask)
     {
-        $tOutput = "";
+        $tOutput = "\\";
         $tCapital = true;
 
         for ($tPos = 0, $tLen = strlen($uTask); $tPos < $tLen; $tPos++) {
@@ -57,7 +64,15 @@ class Tasks
             $tOutput .= $tChar;
         }
 
-        return "\\{$tOutput}Task";
+        foreach (self::$namespaces as $tNamespace) {
+            $tClassName = "\\{$tNamespace}{$tOutput}";
+
+            if (is_subclass_of($tClassName, "\\Scabbia\\Tasks\\TaskBase")) {
+                return $tClassName;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -86,20 +101,14 @@ class Tasks
             return 1;
         }
 
-        $uTaskPath = self::taskName($uTask);
-
-        if (!is_subclass_of($uTaskPath, "\\Scabbia\\Tasks\\TaskBase")) {
-            // try again with \Scabbia prefix.
-            $uTaskPath = "\\Scabbia{$uTaskPath}";
-
-            if (!is_subclass_of($uTaskPath, "\\Scabbia\\Tasks\\TaskBase")) {
-                $uInterface->write(sprintf("Task not found - %s", $uTask));
-                return 1;
-            }
+        $tClassName = self::taskClassName($uTask);
+        if ($tClassName === null) {
+            $uInterface->write(sprintf("Task not found - %s", $uTask));
+            return 1;
         }
 
         try {
-            $tInstance = new $uTaskPath ();
+            $tInstance = new $tClassName ();
             if ($tHelpCommand) {
                 $tInstance->help($uInterface);
                 return 0;
