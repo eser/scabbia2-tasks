@@ -27,9 +27,12 @@ use Scabbia\Tasks\TaskBase;
  */
 class Tasks
 {
-    /** @type array task namespaces */
+    /** @type string base class */
+    const BASE_CLASS = "\\Scabbia\\Tasks\\TaskBase";
+
+
+    /** @type array  task namespaces */
     public static $namespaces = [
-        "",
         "Scabbia"
     ];
 
@@ -64,10 +67,15 @@ class Tasks
             $tOutput .= $tChar;
         }
 
-        foreach (self::$namespaces as $tNamespace) {
-            $tClassName = "\\{$tNamespace}{$tOutput}";
+        $tClassName = "{$tOutput}Task";
+        if (is_subclass_of($tClassName, self::BASE_CLASS)) {
+            return $tClassName;
+        }
 
-            if (is_subclass_of($tClassName, "\\Scabbia\\Tasks\\TaskBase")) {
+        foreach (self::$namespaces as $tNamespace) {
+            $tClassName = "\\{$tNamespace}{$tOutput}Task";
+
+            if (is_subclass_of($tClassName, self::BASE_CLASS)) {
                 return $tClassName;
             }
         }
