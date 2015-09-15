@@ -1,8 +1,6 @@
 # Scabbia2 Tasks Component
 
-**Scabbia2** is an open source PHP framework project which is currently on planning stage. Keep visiting [project homepage](http://scabbiafw.com/) and [repositories](https://github.com/scabbiafw/) for further updates.
-
-[This repository](https://github.com/scabbiafw/scabbia2-tasks/) contains the files of Scabbia2 Tasks Component which is probably required for Scabbia2 Framework to run.
+[This repository](https://github.com/scabbiafw/scabbia2-tasks/) provides an command line tool names *scabbia* and *Scabbia\Tasks\TaskBase* base class to help users create specific tasks with them. These tasks can be started in source code or command line.
 
 [![Build Status](https://travis-ci.org/scabbiafw/scabbia2-tasks.png?branch=master)](https://travis-ci.org/scabbiafw/scabbia2-tasks)
 [![Total Downloads](https://poser.pugx.org/scabbiafw/scabbia2-tasks/downloads.png)](https://packagist.org/packages/scabbiafw/scabbia2-tasks)

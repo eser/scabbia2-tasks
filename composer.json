@@ -35,7 +35,7 @@
     },
     "require": {
         "php": ">=5.6.0",
-        "scabbiafw/scabbia2-interfaces": "*"
+        "scabbiafw/scabbia2-formatters": "*"
     },
     "require-dev": {
         "scabbiafw/scabbia2-testing": "*"

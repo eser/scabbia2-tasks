@@ -13,7 +13,7 @@
 
 namespace Scabbia\Tasks;
 
-use Scabbia\Interfaces\IInterface;
+use Scabbia\Formatters\FormatterInterface;
 
 /**
  * Default methods needed for implementation of a task
@@ -36,19 +36,19 @@ abstract class TaskBase
     /**
      * Executes the task
      *
-     * @param array      $uParameters  parameters
-     * @param IInterface $uInterface   interface class
+     * @param array              $uParameters  parameters
+     * @param FormatterInterface $uFormatter   formatter class
      *
      * @return int exit code
      */
-    abstract public function executeTask(array $uParameters, $uInterface = null);
+    abstract public function executeTask(array $uParameters, $uFormatter = null);
 
     /**
      * Returns the usage form and list of available parameters
      *
-     * @param IInterface $uInterface   interface class
+     * @param FormatterInterface $uFormatter   formatter class
      *
      * @return void
      */
-    abstract public function help($uInterface = null);
+    abstract public function help($uFormatter = null);
 }

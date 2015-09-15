@@ -13,8 +13,8 @@
 
 namespace Scabbia\Tasks;
 
-use Scabbia\Interfaces\IInterface;
-use Scabbia\Interfaces\Interfaces;
+use Scabbia\Formatters\FormatterInterface;
+use Scabbia\Formatters\Formatters;
 use Scabbia\Tasks\TaskBase;
 
 /**
@@ -86,18 +86,16 @@ class Tasks
     /**
      * Runs given task
      *
-     * @param string     $uName        name of the task
-     * @param array      $uParameters  set of parameters
-     * @param IInterface $uInterface   interface class
+     * @param string             $uName        name of the task
+     * @param array              $uParameters  set of parameters
+     * @param FormatterInterface $uFormatter   formatter class
      *
      * @return int exit code
-     *
-     * @todo pass current interface to task
      */
-    public static function run($uTask, array $uParameters, $uInterface = null)
+    public static function run($uTask, array $uParameters, $uFormatter = null)
     {
-        if ($uInterface === null) {
-            $uInterface = Interfaces::getCurrent();
+        if ($uFormatter === null) {
+            $uFormatter = Formatters::getCurrent();
         }
 
         if ($tHelpCommand = ($uTask === "help")) {
@@ -105,26 +103,26 @@ class Tasks
         }
 
         if ($uTask === null) {
-            $uInterface->write("Please specify a task");
+            $uFormatter->write("Please specify a task");
             return 1;
         }
 
         $tClassName = self::taskClassName($uTask);
         if ($tClassName === null) {
-            $uInterface->write(sprintf("Task not found - %s", $uTask));
+            $uFormatter->write(sprintf("Task not found - %s", $uTask));
             return 1;
         }
 
         try {
             $tInstance = new $tClassName ();
             if ($tHelpCommand) {
-                $tInstance->help($uInterface);
+                $tInstance->help($uFormatter);
                 return 0;
             }
 
-            return $tInstance->executeTask($uParameters, $uInterface);
+            return $tInstance->executeTask($uParameters, $uFormatter);
         } catch (\Exception $ex) {
-            $uInterface->write(sprintf("%s: %s", get_class($ex), $ex->getMessage()));
+            $uFormatter->write(sprintf("%s: %s", get_class($ex), $ex->getMessage()));
             return 1;
         }
     }
