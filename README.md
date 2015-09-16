@@ -1,6 +1,6 @@
 # Scabbia2 Tasks Component
 
-[This repository](https://github.com/scabbiafw/scabbia2-tasks/) provides an command line tool named `scabbia` and `Scabbia\Tasks\TaskBase` base class to help users create specific tasks with them. These tasks can be started in source code or command line.
+[This component](https://github.com/scabbiafw/scabbia2-tasks/) provides an command line tool named `scabbia` and `Scabbia\Tasks\TaskBase` base class to help users create specific tasks with them. These tasks can be started in source code or command line.
 
 [![Build Status](https://travis-ci.org/scabbiafw/scabbia2-tasks.png?branch=master)](https://travis-ci.org/scabbiafw/scabbia2-tasks)
 [![Total Downloads](https://poser.pugx.org/scabbiafw/scabbia2-tasks/downloads.png)](https://packagist.org/packages/scabbiafw/scabbia2-tasks)
