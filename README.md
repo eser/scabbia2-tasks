@@ -3,11 +3,11 @@
 [This component](https://github.com/scabbiafw/scabbia2-tasks/) provides an command line tool named `scabbia` and `Scabbia\Tasks\TaskBase` base class to help users create specific tasks with them. These tasks can be started in source code or command line.
 
 [![Build Status](https://travis-ci.org/scabbiafw/scabbia2-tasks.png?branch=master)](https://travis-ci.org/scabbiafw/scabbia2-tasks)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/scabbiafw/scabbia2-tasks/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/scabbiafw/scabbia2-tasks/?branch=master)
 [![Total Downloads](https://poser.pugx.org/scabbiafw/scabbia2-tasks/downloads.png)](https://packagist.org/packages/scabbiafw/scabbia2-tasks)
 [![Latest Stable Version](https://poser.pugx.org/scabbiafw/scabbia2-tasks/v/stable)](https://packagist.org/packages/scabbiafw/scabbia2-tasks)
 [![Latest Unstable Version](https://poser.pugx.org/scabbiafw/scabbia2-tasks/v/unstable)](https://packagist.org/packages/scabbiafw/scabbia2-tasks)
 [![Documentation Status](https://readthedocs.org/projects/scabbia2-documentation/badge/?version=latest)](http://docs.scabbiafw.com/)
-[![License](https://poser.pugx.org/scabbiafw/scabbia2-tasks/license.png)](https://packagist.org/packages/scabbiafw/scabbia2-tasks)
 
 ## Links
 - [Documentation](http://docs.scabbiafw.com/)
