@@ -86,7 +86,7 @@ class Tasks
     /**
      * Runs given task
      *
-     * @param string             $uName        name of the task
+     * @param string             $uTask        name of the task
      * @param array              $uParameters  set of parameters
      * @param FormatterInterface $uFormatter   formatter class
      *

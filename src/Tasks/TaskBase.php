@@ -26,8 +26,6 @@ abstract class TaskBase
 {
     /**
      * Initializes a task
-     *
-     * @return TaskBase
      */
     public function __construct()
     {
@@ -41,7 +39,7 @@ abstract class TaskBase
      *
      * @return int exit code
      */
-    abstract public function executeTask(array $uParameters, $uFormatter = null);
+    abstract public function executeTask(array $uParameters, FormatterInterface $uFormatter);
 
     /**
      * Returns the usage form and list of available parameters
@@ -50,5 +48,5 @@ abstract class TaskBase
      *
      * @return void
      */
-    abstract public function help($uFormatter = null);
+    abstract public function help(FormatterInterface $uFormatter);
 }
