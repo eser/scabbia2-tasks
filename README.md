@@ -9,6 +9,48 @@
 [![Latest Unstable Version](https://poser.pugx.org/eserozvataf/scabbia2-tasks/v/unstable)](https://packagist.org/packages/eserozvataf/scabbia2-tasks)
 [![Documentation Status](https://readthedocs.org/projects/scabbia2-documentation/badge/?version=latest)](https://readthedocs.org/projects/scabbia2-documentation)
 
+## Usage
+
+### Custom Task
+
+```php
+namespace MyProject;
+
+use Scabbia\Tasks\TaskBase;
+use Scabbia\Formatters\FormatterInterface;
+
+class MyTaskTask extends TaskBase {
+    public function executeTask(array $parameters, FormatterInterface $formatter) {
+        $formatter->write('task is executed, with parameters:');
+        $formatter->writeArray($parameters);
+    }
+
+    public function help(FormatterInterface $formatter) {
+        $formatter->write('help');
+    }
+}
+```
+
+`scabbia myProject:myTask` command will execute your task. Also `scabbia help myProject:myTask` displays the help you've provided.
+
+### Running Tasks at Runtime
+
+```php
+use Scabbia\Tasks\Tasks;
+
+Tasks::run('myProject:myTask', ['parameter1', 'parameter2']);
+```
+
+### Registering namespaces for commands
+
+```php
+use Scabbia\Tasks\Tasks;
+
+Tasks::$namespaces[] = 'MyProject';
+```
+
+Therefore `scabbia myTask` will be sufficent to execute your task.
+
 ## Links
 - [List of All Scabbia2 Components](https://github.com/eserozvataf/scabbia2)
 - [Documentation](https://readthedocs.org/projects/scabbia2-documentation)
