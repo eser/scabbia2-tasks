@@ -33,6 +33,8 @@ class MyTaskTask extends TaskBase {
 
 `scabbia myProject:myTask` command will execute your task. Also `scabbia help myProject:myTask` displays the help you've provided.
 
+You can also create your custom command line app, just refer to `vendor/bin/scabbia`.
+
 ### Running Tasks at Runtime
 
 ```php
